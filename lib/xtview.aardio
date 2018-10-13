@@ -1,0 +1,428 @@
+namespace xtview{
+    css = /**
+@charset "UTF-8";
+*{margin:0px;padding:0px;vertical-align:middle;font-size:14px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td {margin:0;padding:0;}
+a:hove{text-decoration:none;color:normal;}
+a:active{text-decoration:none;color:normal;}
+a:link{text-decoration:none;color:normal;}
+a:visited{text-decoration:none;color:normal;}
+body{background:#121E31;padding-left:5px;padding-bottom:30px;color:gray;}
+.show{display:block;}
+.hide{display:none;}
+.root-hd{margin-top:50px;}
+ul{list-style:none;display:block;padding-left:30px;}
+ul li{padding-top:12px;position:relative;}
+li.show-level:before{content:attr(data-level);width:12px;height:12px;text-align:center;color:gray;font-size:10px;position:absolute;top:50%;left:-6px;z-index:20;background:#273A4B;border-radius:50%;}
+li div{border-left:1px dashed gray;padding:0px;padding-left:5px;}
+li div:first-child{padding-bottom:0px;}
+li div:first-child dl:before,.root-hd dl:before{content:attr(data-clps);color:gray;overflow:hidden;margin:0px;padding:0px;}
+li div:last-child{padding-top:0px;}
+li div:first-child dl:hover{background:#273A4B;}
+dd{display:inline-block;padding:3px;width:auto;}
+dd.func-return pre{max-width:200px;}
+dd.func-params pre{max-width:100px;}
+.pointer:before{cursor:pointer;}
+.esclipe:before{content:'...';font-weight:bold;color:#41A62D;vertical-align:middle;}
+.highlight-symbol{font-weight:normal;color:gray;}
+.highlight-func{font-weight:550;color:#18A05E;}
+.highlight-return{font-weight:550;color:#8066FF;}
+.highlight-msg{font-weight:400;color:#FF4C02;}
+.highlight-msg2{font-weight:400;color:#FFCB42;}
+.highlight-path{font-weight:300;color:gray;}
+.highlight-params{font-weight:300;color:#8F0000;}
+.highlight-line{font-weight:300;color:#4B8BF4;}
+
+.longtext{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:inline-block;vertical-align:middle;margin-right:2px;}
+
+.icon-info:before{content:'i';display:inline-block;vertical-align:middle;width:12px;height:12px;border-radius:50%;border:1px solid gray;color:gray;text-align:center;font-size:10px;font-family:Times, TimesNR, 'New Century Schoolbook',Georgia, 'New York', serif;font-style:normal;cursor:pointer;}
+.icon-show{display:inline-block;}
+.icon-hide{display:none;}
+
+.tips-box{position:absolute;display:none;width:300px;height:65px;z-index:50;background:#FFFFE1;border-radius:4px;border:1px solid #fff;padding:3px;overflow-x:hidden;overflow-y:auto;font-size:10px;line-height:13px;color:#000;resize:both;word-wrap:break-word;}
+.top-left-square{border-top-left-radius:0px;}
+.top-right-square{border-top-right-radius:0px;}
+.bottom-left-square{border-bottom-left-radius:0px;}
+.bottom-right-square{border-bottom-right-radius:0px;}
+
+.attention-anim{-webkit-animation: 1s attention infinite;}
+
+@-webkit-keyframes attention {
+  0% { background: #273A4B; }
+  50% { background: #121E31; }
+  100% { background: #121E31; }
+}
+
+.toolbar{position:fixed;top:0px;left:0px;display:block;width:100%;height:50px;background:#121E31;z-index:60;}
+.input-file-wrapper{position:relative;margin:10px 30px;}
+.input-merge{border: 2px solid gray;color:gray;height:20px;line-height:20px;padding:5px;background:transparent;}
+a.input-merge{display:inline-block;width:20px;cursor:pointer;text-align:center;font-size:12px;font-weight:bold;font-stretch:wider;background:#293134;}
+.input-file{border-top-left-radius:5px;border-bottom-left-radius:5px;border-right:none;width:85%;}
+.recent{border-top-right-radius:5px;border-bottom-right-radius:5px;border-left:none;}
+.reload{border-left:none;border-right:1px solid gray;}
+.about-btn{display:block; margin-top:8px; margin-right:5px;float:right;color:gray;font-weight:bold;font-size:16px;width:20px;height:21px;padding-right:1px;border:2px solid gray;background:#293134;text-align:center;border-radius:50%;-webkit-transform:rotate(90deg);position:relative;}
+.about-btn:after{clear:both;}
+.about-btn .hidot{display:block;width:7px;height:7px;border-radius:50%;background:red;position:absolute;top:-2px;left:-2px;}
+
+.recent-wrapper{position:absolute;display:none;overflow:auto;border:1px solid gray;width:90%;background:#121E31;max-height:300px;z-index:60;left:0px;padding:0px;}
+.recent-wrapper li{display:block;height:25px;padding-left:5px;white-space:nowrap;overflow:hidden; text-overflow:ellipsis;}
+.recent-wrapper li:hover{background:#273A4B;cursor:pointer;}
+.recent-wrapper li a{margin-right:8px;}
+
+/* scrollbar style */
+.recent-wrapper::-webkit-scrollbar {
+	width: 10px;
+	height: 50px;
+}
+.recent-wrapper::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	background: #3F4B4E; /*rgba(0,0,0,0.5);*/
+}
+.recent-wrapper::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+	border-radius: 0;
+	background: rgba(0,0,0,0.3);
+}
+.popupwin{position:fixed;width:400px;height:300px;min-height:200px;text-align:center;z-index:90;padding:10px;border:2px solid #313131;border-radius:5px;background:#FFF;overflow:auto;margin:auto;left:0;top:0;right:0;bottom:0;color:#000;letter-spacing:2px;}
+.popupwin .hide{display:none;}
+.pop-close-btn{position:absolute;top:0px;right:0px;background:#3F4B4E;color:white;cursor:pointer;width:20px;height:20px;text-align:center;border-bottom-left-radius:5px;font-family:Arial;font-weight:bold;}
+.pop-close-btn:hover{color:red;}
+.msg-panel{margin-top:30px;}
+.msg-panel div{height:25px;line-height:25px;}
+
+**/;
+
+	jscode = /**
+function reloadFile(){
+	var path = document.getElementById('input_file').value;
+	typeof external['reloadFile'] == 'function' && external.reloadFile(path);
+}
+function openFileDlg(){
+	typeof external['openFileDlg'] == 'function' && external.openFileDlg();
+}
+function selectRecent(sender){
+	var id=sender.id, path=sender.innerText;
+	setFilePath(path);
+	external['selectFile'] == 'function' && external.selectFile(path);
+}
+function getVersion(){
+	return typeof external['getVersion'] == 'function' && external.getVersion();
+}
+function getVid(){
+	return typeof external['getVid'] == 'function' && external.getVid();
+}
+function getUrl(){
+	return typeof external['getUrl'] == 'function' && external.getUrl();
+}
+
+function openUrl(url){
+	typeof external['openUrl'] == 'function' && external.openUrl(url);
+}
+function showRecent(event){
+    if (recent_wrapper.children.length > 0 ) {
+    	recent_wrapper.style.display='block';
+		event.stopPropagation();
+    }
+	
+}
+function hideRecent(){
+	recent_wrapper.style.display='none';
+}
+function addRecent(id, path){
+	if (!document.getElementById(id)) {
+		var li = document.createElement('li');
+		li.id = id;
+		li.innerText = path;
+		li.addEventListener('click', function(){
+			selectRecent(this);
+		});
+		recent_wrapper.appendChild(li);
+		li = null;
+	}
+}
+function remRecent(id){
+	if (!document.getElementById(id)) {
+		recent_wrapper.removeChild(document.getElementById(id));
+	}
+}
+function msg(msg){
+	alert(msg);
+}
+
+
+Array.prototype.sum = function (){
+    var _self = this;
+    if (_self.length == 0) return 0;
+    if (_self.length == 1) return _self[0];
+    var middle = Math.floor(_self.length / 2);
+    return _self.slice(0, middle).sum() + _self.slice(middle).sum();
+};
+//aardio interface
+function setFilePath(path){
+	document.getElementById('input_file').value = path;
+}
+//Global vars
+var getStyle = window.getComputedStyle;
+var tips_box = document.getElementById('tips_box');
+var recent_wrapper = document.getElementById('recent_wrapper');
+var mm = function (m1, m2){
+        return [
+            m1[0][0]*m2[0]+m1[0][1]*m2[1],
+            m1[1][0]*m2[0]+m1[1][1]*m2[1]
+        ];
+    };
+var layout = {
+        up:    [[0,  0], [0, -1]],
+        down:  [[0,  0], [0,  1]],
+        left:  [[-1, 0], [0,  0]],
+        right: [[1,  0], [0,  0]]
+    };
+var locate = function (ele, flag, sender, event, callback){
+	var offset = mm(layout[flag], getEleM(sender)).sum();
+	var start = 0, prop;
+	var eleStyle = getStyle(ele);
+	switch(flag){
+		case 'up':
+			prop = 'top';
+			offset += -1*parseInt(eleStyle.height);
+			start = event.pageY;
+			typeof(callback)=='function' && callback('bottom');
+			break;
+		case 'down':
+			prop = 'top';
+			start = event.pageY;
+			typeof(callback)=='function' && callback('top');
+			break;
+		case 'left':
+			prop = 'left';
+			offset += -1*parseInt(eleStyle.width);
+			start = event.pageX;
+			typeof(callback)=='function' && callback('right');
+			break;
+		case 'right':
+			prop = 'left';
+			start = event.pageX;
+			typeof(callback)=='function' && callback('left');
+			break;
+	}
+	ele.style[prop] = (+start + +offset) + 'px';
+};
+
+function tips_position(sender, event){
+    //console.log(arguments);
+    var ww=window.innerWidth, wh=window.innerHeight;
+	var _bdrdscls = '{vertial}-{horizontal}-square';
+    if (event.clientX < ww / 2) {
+        locate(tips_box, 'right', sender, event, function(ort){
+			_bdrdscls = _bdrdscls.replace(/\{horizontal\}/, ort);
+		}); // left = pageX + offset
+    } else {
+        locate(tips_box, 'left', sender, event, function(ort){
+			_bdrdscls = _bdrdscls.replace(/\{horizontal\}/, ort);
+		}); // left = pageX - self.width - offset
+    }
+    if (event.clientY < wh / 2) {
+        locate(tips_box, 'down', sender, event, function(ort){
+			_bdrdscls = _bdrdscls.replace(/\{vertial\}/, ort);
+		}); //top = pageY + offset
+    } else {
+        locate(tips_box, 'up', sender, event, function(ort){
+			_bdrdscls = _bdrdscls.replace(/\{vertial\}/, ort);
+		}); // top = pageY - self.height - offset
+    }
+	
+	_bdrdscls.indexOf('{') == -1 && (remClses(tips_box, ['top-left-square', 'top-right-square', 'bottom-left-square', 'bottom-right-square']),tips_box.classList.add(_bdrdscls));
+}
+
+function remClses(ele, clses){
+	for(var i=0; i<clses.length; i++){
+		ele.classList.remove(clses[i]);
+	}
+}
+
+function getEleM(ele){
+	var eleStyle = getStyle(ele);
+    var m = [parseInt(eleStyle.width), parseInt(eleStyle.height)];
+    return m;
+}
+
+function ajax(options){
+	var ajax = new XMLHttpRequest();
+	ajax.open(options.type, options.url, options.async || true);
+	ajax.send(options.data || {});
+	ajax.onreadystatechange = function () {
+		if (ajax.readyState==4 && ajax.status==200) {
+			typeof options.onRaw == 'function' && options.onRaw(ajax.responseText);
+			options.onSuccess(JSON.parse(ajax.responseText), ajax);
+		}
+	}
+}
+
+function getAbout(){
+	var ver = getVersion();
+	var url = getUrl();
+	var compareVer = function(ver1, ver2){
+		return ver1 > ver2 ? 1 : (ver1 < ver2 ? -1 : 0);
+	};
+	var isHomePage = typeof(renderTpl)=='function'?1:0;
+	ajax({
+		type: 'get',
+		url: url+'&ishomepage=' + isHomePage,
+		data: {},
+		onSuccess: function(res){
+			//alert(res.vid);
+			if (compareVer(ver, res.ver) == -1) {
+				document.getElementById('about_btn_dot').classList.add('hidot');
+				$$('new_version').innerHTML = 'New version: <a href="javascript:openUrl(\''+res.url+'\');">' + res.ver + ' (click to download)</a>';
+			} else {
+				$$('new_version').innerHTML = 'The version is the newest.';
+			}
+			$$('cur_version').innerText = 'v' + ver;
+			$$('contact').innerHTML = 'Contact: <a href="javascript:openUrl(\'mailto:'+res.contact+'\');">'+res.contact+'</a>';
+			$$('other_msg').innerHTML = res.msg;
+		}
+	});
+}
+
+function $$(id){
+	return document.getElementById(id);
+}
+
+function popupwin(){
+	$$('popupwin').style.display = 'block';
+}
+
+window.onload = function () {
+    var objs = document.querySelectorAll('li div:first-child');
+    var collapse = function (e){
+        var child2 = this.parentNode.querySelector('div:nth-child(2)');
+        if (!child2) return;
+        var ul_of_child2 = child2.querySelector('ul');
+        if (ul_of_child2) {
+            var status = ul_of_child2.style.display;
+            if (status == 'none') {
+                ul_of_child2.style.display = 'block';
+                this.querySelector('dl').setAttribute('data-clps', '-');
+            } else {
+                ul_of_child2.style.display = 'none';
+                this.querySelector('dl').setAttribute('data-clps', '+');
+            }
+            child2.classList.toggle('esclipe');//instead of switching between add() and remove()
+        }
+    }
+    document.querySelector('.root-hd').addEventListener("click", collapse, false);
+    for (var i=0; i<objs.length; i++) {
+        objs[i].addEventListener("click", collapse, false);
+    }
+    
+    var icons = document.querySelectorAll('dd i');
+    for (var i=0; i<icons.length; i++) {
+		//webkit不支持mouseenter
+        icons[i].addEventListener("mouseover", function (event){
+            tips_box.style.display = 'block';
+            tips_box.innerText = this.parentNode.querySelector('pre').innerText;
+            tips_position(this, event);
+        }, false);
+    }
+    tips_box.addEventListener("mouseout", function (event){
+        this.style.display = 'none';
+        this.innerText = '';
+    }, false);
+	
+    document.body.addEventListener("click", function (event){
+        tips_box.style.display = 'none';
+        tips_box.innerText = '';
+		hideRecent();
+		$$('popupwin').style.display = 'none';
+    }, false);
+    
+    $$('popupwin').addEventListener('click', function (event){
+		event.stopPropagation();
+	}, false);
+	
+	$$('closepop').addEventListener('click', function (event){
+		$$('popupwin').style.display = 'none';
+	}, false);
+	
+	var pre_set = document.querySelectorAll('dd pre'), pre_style;
+    for (var i=0; i<pre_set.length; i++) {
+        pre_style = getStyle(pre_set[i]);
+        if (parseInt(pre_style.width) < parseInt(pre_style.maxWidth)) {
+            (function(obj){obj.add('icon-hide');return obj;})(pre_set[i].parentNode.querySelector('i').classList).remove('icon-show');
+        }
+    }
+	
+	var history_lis = document.querySelectorAll('#recent_wrapper li');
+	for (var i=0; i<history_lis.length; i++) {
+		history_lis[i].addEventListener('click', function(event){
+			selectRecent(this);
+		});
+	}
+	
+	getAbout();
+}
+**/;
+
+    itemTpl = /**
+    		<li data-level="%s" class="show-level">
+                <div>
+                    <dl data-clps="-" class="%s">
+                        <dd class="highlight-func">%s</dd>
+                        <dd class="highlight-symbol">=></dd>
+                        <dd class="highlight-return func-return"><pre class="longtext">%s</pre><i class="icon-info %s"></i></dd>
+                        <dd class="highlight-msg %s">time(s): %s</dd>
+                        <dd class="highlight-msg2">mem(kb): %s</dd>
+                        <dd class="highlight-path">%s</dd>
+                        <dd class="highlight-line">Line:%s</dd>
+                        <dd class="highlight-params">Params(%s):</dd>
+                        <dd class="highlight-params func-params"><pre class="longtext">%s</pre><i class="icon-info %s"></i></dd>
+                    </dl>
+                </div>
+                %s
+           	</li>
+    **/	;
+    
+    htmlTpl = /**
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>XTView</title>
+    <style>
+    %s
+    </style>
+  </head>
+  
+  <body>
+	<div class="toolbar">
+		<div class="input-file-wrapper">
+			<input value="%s" id="input_file" type="text" class="input-merge input-file" readonly="readonly" onclick=""/><a style="display:none;" title="Reload" class="input-merge reload" onclick="openFileDlg()">&hellip;</a><a title="Recent" class="input-merge recent" onclick="openFileDlg()">∨</a><a id="about_btn" class="about-btn" href="javascript:popupwin();">···<i id="about_btn_dot"></i></a>
+			<ul id="recent_wrapper" class="recent-wrapper">
+				%s
+			</ul>
+		</div>
+	</div>
+	
+    <div class="root-hd"><dl data-clps="-" class="pointer"><dd class="highlight-func">Root</dd></dl></div>  
+    %s	
+	<div id="tips_box" class="tips-box"></div>
+	<div id="popupwin" class="popupwin hide">
+		<div id="closepop" class="pop-close-btn">X</div>
+		<div class="msg-panel">
+			<div><span style="font-size:20px;font-family:Consolas;font-weight:bold;color:#EC292D;margin-right:10px;vertical-align:bottom;">XTViewer</span><span id="cur_version" style="vertical-align:bottom;"></span></div>
+			<div><span id="new_version"></span></div>
+			<div></div>
+			<div><span id="contact"></span></div>
+			<div></div>
+			<div id="other_msg" class="other-msg"></div>
+		</div>
+	</div>
+  </body>
+</html>
+<script type="text/javascript">
+%s
+</script>
+    **/;
+}

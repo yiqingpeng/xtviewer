@@ -1,0 +1,451 @@
+import web.kit.portable;
+import win.ui;
+import win.guid;
+import environment;
+import string.regex;
+import string.md5;
+import string.html;
+import fsys.ini;
+import fsys.dlg;
+/*DSG{{*/
+mainForm = win.form(text="XTViewer";right=959;bottom=591;acceptfiles=1;maximize=1)
+mainForm.add()
+/*}}*/
+
+import web.kit.form;
+import fsys.environment;
+//import web.kit.jsFunction;
+import xtview;
+var wbKitView = web.kit.form(mainForm);//创建webkit浏览器窗口
+var PARSE_ENABLE = true;
+var css = xtview.css;
+var jscode = xtview.jscode;
+var itemTpl = xtview.itemTpl;
+var html = xtview.htmlTpl;
+var version='0.1.01';
+
+//实现一个堆栈类
+class Stack {
+    @{ _get = self }
+}
+Stack.push = function( ... ){
+    table.push( owner , ... ); 
+}
+Stack.pop = function( n=1 ){
+    return table.pop( owner , n ); 
+}
+Stack.top = function(){
+	return owner[table.count(owner)];
+}
+Stack.isEmpty = function(){
+	return table.count(owner) <= 0;
+}
+
+function htmlentities(input){
+	return string.html.fromText(input);//change html symbol to entities.
+}
+
+class JS{
+    ctor(wbkit){
+        this.wbkit = wbkit;
+    }
+   
+	setFilePath = function (path){
+		//..mainForm.msgbox(path);
+		var script = 'setFilePath("' + ..string.replace(path,"@@\","\\\\") + '")';
+		this.wbkit.doScript(script);
+	};
+	
+	addFilePath = function (id, path){
+		var script = 'addRecent("' + id + '","' + ..string.replace(path,"@@\","\\\\") + '")';
+		this.wbkit.doScript(script);
+	};
+	
+	setXdebugConfig = function (config){
+		var script = `setXdebugConfig('`+config+`')`;
+		this.wbkit.doScript(script);
+	}
+	
+	msg = function (msg) {
+		this.wbkit.doScript(`msg("`++tostring(msg)++`")`);
+	};
+}
+
+var js = JS(wbKitView);
+
+class XtFuncEmpty{
+	setParent = function(parent){};
+	addChild = function(child){};
+}
+
+class XtFunc{
+	name=null;
+	ret='';
+	level=0;
+	funcId=null;
+	isScannedEnd=false;
+	time_s=0;
+	mem_s=0;
+	time_e=0;
+	mem_e=0;
+	usrOrsys=null;
+	inclOrreq=null;
+	triggeredFile=null;
+	triggeredLine=null;
+	paramsCount=0;
+	params=null;
+	parent=null;
+	children={};
+	stringTpl = itemTpl;
+	
+	setBase = function(arr){
+		if (arr[3] === '0') {
+			this.level = ..tonumber(arr[1]);
+			this.funcId = arr[2];
+			this.time_s = ..tonumber(arr[4]);
+			this.mem_s = ..tonumber(arr[5]);
+			this.name = arr[6];
+			this.usrOrsys = arr[7];
+			this.inclOrreq = arr[8];
+			this.triggeredFile = arr[9];
+			this.triggeredLine = arr[10];
+			this.paramsCount = ..tonumber(arr[11]);
+			this.params = ..string.join(this.lookParams(arr), ',');
+			return this;
+		}
+	};
+	
+	lookParams = function (arr){
+		if (arr[11] == 0 ) {
+			return {};
+		} else {
+			var rest = ..table.slice(arr, 12);
+			for key,value in rest{
+				rest[key] = ..htmlentities(value);
+			}
+			return rest;
+		}
+	};
+	
+	setEnd = function(arr){
+		if (arr[3] === '1') {
+			var level, funcId, typeflag;
+			level,funcId, typeflag, this.time_e, this.mem_e = ..table.unpack(arr, 1, 5);
+			this.time_e = ..tonumber(this.time_e);
+			this.mem_e = ..tonumber(this.mem_e);
+		}
+		return this;
+	};
+	
+	setReturn = function(ret){
+		this.ret = ..htmlentities(ret);
+        this.setIsScannedEnd(2);
+        return this;
+	};
+	
+	setParent = function(xtfunc){
+		this.parent = xtfunc;
+		return this;
+	};
+	
+	getParent = function(){
+		return this.parent;
+	};
+	
+	getFuncId = function(){
+		return this.funcId;
+	};
+	
+	getLevel = function(){
+		return this.level;
+	};
+	
+	setIsScannedEnd = function(flag){
+		this.isScannedEnd = flag;
+		return this;
+	};
+	
+	getIsScannedEnd = function(){
+		return this.isScannedEnd;
+	};
+	
+	addChild = function(xtfunc){
+		..table.push(this.children, xtfunc);
+		return this;
+	};
+	
+	toString = function(){
+		var childrenStr='', pointer='';
+		if (..table.count(this.children) > 0) {
+			pointer = 'pointer';
+			childrenStr += '<div><ul>';
+			for key,value in this.children{
+				childrenStr += this.children[key].toString();
+			}
+			childrenStr += '</ul></div>';
+		}
+		return ..string.format(this.stringTpl, this.level, pointer, this.name, 
+			this.ret, this.ret ? 'icon-show':'icon-hide', '', this.time_e-this.time_s, 
+			(this.mem_e-this.mem_s)/1024,this.triggeredFile,this.triggeredLine,this.paramsCount, 
+			this.params, this.paramsCount>0?'icon-show':'icon-hide',childrenStr);
+	};
+	
+	getParams = function(){
+		return this.params;
+	};
+}
+
+//var xtf = XtFunc();
+//var p = xtf.setBase({1;2;'0';4;5;6;7;8;9;10;11;'<script></script>';'abcd'}).getParams();
+//mainForm.msgbox(p);
+//mainForm.msgbox(xtf.lookParams({1;2;3;4;5;6;7;8;9;10;11;'<script></script>'}));
+
+namespace XtFuncFact{
+    list = {};
+    stack = ..Stack();
+    
+    init = function(){
+    	list = {};
+    	stack = ..Stack();
+    }
+    
+	getFunc = function(funcId){
+		return list[funcId];
+	};
+	
+	pushFunc = function(funcId, xtFunc){
+		if(!list[funcId]){
+			list[funcId] = xtFunc;
+		} 	
+		return list[funcId];
+	};
+	
+	onStart = function(line_arr){
+		var xtf = ..XtFunc();
+		xtf.setBase(line_arr);
+		var parent = stack.isEmpty() ? ..XtFuncEmpty() : stack.top();
+		xtf.setParent(parent);
+		stack.push(xtf);
+		pushFunc(line_arr[2], xtf);
+        return xtf;
+	};
+	
+	onEnd = function(line_arr){
+		var me = stack.pop();
+		var parent = me.getParent();
+		parent.addChild(me);
+		me.setEnd(line_arr);
+	};
+	
+	handle = function(line_arr){
+		if(!tonumber(line_arr[1])) return false;	
+        //level = line_arr[1];
+        var funcId = line_arr[2];
+        var stage = line_arr[3];
+		
+        if (stage === '0') {
+            onStart(line_arr);
+        }
+        
+        if (stage === '1') {
+            onEnd(line_arr);
+        }
+        
+        if (stage === 'R') {
+            getFunc(funcId).setReturn(line_arr[6]);
+        }
+	};
+
+	getList = function (){
+		return list;
+	};
+	
+	getItem = function(index){
+		return list[index];
+	};
+	
+	render = function(){
+    	return  "<div><ul>" + getItem('0').toString() + "</ul></div>";
+	};
+}
+
+function readByline(file, online){
+	var i=0, res;
+	for line in io.lines(file) {
+		i++;
+		res = online(i, line);
+		if (!res) break;
+	}
+}
+
+function parseLine(line){
+    var arr = string.split(line,'<\t>');
+    for i,v in arr{
+    	arr[i] = string.trim(v);
+    }
+	return arr;
+}
+
+function onFileCheck(filepath){
+	var i=0, line_arr;
+	for line in io.lines(filepath) {
+		i++;
+		line_arr = parseLine(line);
+		if (i> 4) return false;
+		if (i< 4) continue;
+		if (line_arr[11]) return true;
+	}
+}
+
+function onFileParse(filepath){
+	 //fsys.environment.expand('%AppData%');
+	 XtFuncFact.init();
+	 readByline(filepath, function(i, line){
+	 	var line_arr = ..parseLine(line);
+	 	..XtFuncFact.handle(line_arr);
+	 	return true;
+	 });
+}
+
+function createTargetPath(){
+	var dir = fsys.environment.expand('%Temp%') ;
+	var path = dir + "\" + string.sub(string.md5(win.guid.create(), true),0,16) + '.html';
+	return path;
+} 
+
+function onFileSelected(filepath){
+	if (!io.exist(filepath))  return null;
+	if (!onFileCheck(filepath)) return null;
+	onFileParse(filepath);
+	var content = string.format(html, css, filepath, "", XtFuncFact.render(), jscode);
+	var tmppath = createTargetPath();
+	string.save(tmppath, content);
+	wbKitView.go(tmppath);
+	//js.setFilePath(filepath);
+}
+
+function findPhpDir(){
+    var sys_env = environment.system();
+    var usr_env = environment.user();
+	var path = sys_env.get('PATH') + ';' + usr_env.get('PATH');
+	var path_list = string.split(path, ';');
+	var k,v,php_dir = '';
+	var reg = string.regex(".+\\php.*");
+	reg.ignoreCase = 1; //注意只能用1,不能用true, 否则报错。
+	for (k,v in path_list) {
+		if (reg.find(v)) {
+			php_dir = v;
+			break;
+		}
+	}
+	return php_dir;
+}
+
+function getPhpIni(php_dir){
+    import process;
+    var phpini_path = php_dir ++ '\\php.ini';
+	if (!io.exist(phpini_path)) {
+		//phpini_path = fsys.searchFile( "php.ini","c:\php5.6.35");//for test
+		phpini_path = fsys.searchFile( "php.ini");
+	}
+	if (!phpini_path) {
+		/*
+		var httpd = process.find('httpd.exe');
+		var apachepath = process.getPath(httpd.id);//find httpd.conf then parse it so that look up php.exe path.
+		*/
+	}
+	return phpini_path;
+}
+
+function parsePhpIni(phpini){
+	var ini=fsys.ini(phpini);
+	var sec = ini.getSection("Xdebug");
+	return sec;
+}
+
+function setXdebugConfig(){
+	var phpDir = findPhpDir();
+	var phpIni = getPhpIni(phpDir);
+	if (phpIni){
+		var trace_conf={};
+		var sec = parsePhpIni(phpIni);
+		if (sec){
+			try{
+				js.setXdebugConfig(web.json.stringify(sec));
+			}catch(e){
+				
+        	}
+		}
+	}
+}
+
+function onDropfile(filepath){
+    onFileSelected(filepath);
+}
+
+mainForm.wndproc = function(hwnd,message,wParam,lParam){
+        select(message) { 
+
+        	case 0x233/*_WM_DROPFILES*/{ 
+                
+                path =  win.getDropFile(wParam )[1];
+                onDropfile(path);  
+                
+        	} 
+
+    }
+}
+
+wbKitView.external = {
+	openFileDlg = function (){
+		var path = fsys.dlg.open("xdebug文件|*.xt");
+		if (path) {
+			onFileSelected(path);
+		}
+	};
+	
+	reloadFile = function (path) {
+		if (path) {
+			//wbKitView.go( '/res/index.html' );
+			//wbKitView.waitDoc();
+			onFileSelected(path);
+		}
+	};
+	
+	selectFile = function (path) {
+		if (path) {
+			onFileSelected(path);
+		}
+	};
+	
+	getVersion = function (){
+		return version;
+	};
+	
+	getVid = function (){
+		import sys.hd;
+		var hdsn = sys.hd.getInfo()[["sSerialNumber"]];
+		var s32,s16 =  string.md5(hdsn,true);
+		return s16;
+	};
+	
+	getUrl = function (){
+		return 'http://resource.siguoyi.com/xtviewer.php?vid=' ++ owner.getVid();//detected new version
+	};
+	
+	openUrl = function (url){
+		if(string.indexOf(url, 'mailto:') != 1) {
+			process.execute(url);
+		}
+	};
+};
+
+wbKitView.go( '/res/index.html' ); 
+wbKitView.waitDoc();
+setXdebugConfig(); 
+//js.msg(onFileCheck("F:\website\tryit.com\xt\trace.light.xt")?23:10);
+//js.addFilePath('22','ddddddddd');
+//wbKitView.reload();
+//wbKitView.
+mainForm.show();
+return win.loopMessage();

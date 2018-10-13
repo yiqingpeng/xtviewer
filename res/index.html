@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>XTView</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  
+  <body>
+	<div class="toolbar">
+		<div class="input-file-wrapper">
+			<input id="input_file" type="text" class="input-merge input-file" readonly="readonly" onclick=""/><a title="OpenFile" class="input-merge reload" onclick="openFileDlg()" style="display:none;">&hellip;</a><a title="Recent" class="input-merge recent" onclick="openFileDlg()">∨</a><a id="about_btn" class="about-btn" href="javascript:popupwin();">···<i id="about_btn_dot"></i></a>
+			<ul id="recent_wrapper" class="recent-wrapper"><!--
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>
+				<li>F:\website\tryit.com\xt\trace.light.xt</li>
+				<li>F:\website\tryit.com\xt\trace.xt</li>-->
+			</ul>
+		</div>
+	</div>
+	
+    <div class="root-hd"><dl data-clps="-" class="pointer"><dd class="highlight-return">XDebug Configs</dd></dl></div>
+    
+    <div onselectstart="return false;">
+        <ul id="items_box"><!--
+            <li data-level="1" class="show-level">
+                <div>
+                    <dl data-clps='-' class="pointer">
+                        <dd class="highlight-return">fopen</dd>
+                        <dd class="highlight-symbol">=</dd>
+                        <dd class="highlight-msg2">#resourceaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</dd>
+                        <dd class="highlight-msg">NO</dd>
+                        <dd class="highlight-msg2"></dd>
+                        <dd class="highlight-path">Expected 1</dd>
+                        <dd class="highlight-line"></dd>
+                        <dd class="highlight-params"></dd>
+                        <dd class="highlight-params func-params"></dd>
+                    </dl>
+                </div>
+            </li>
+            <li data-level="1" class="show-level">
+                <div>
+                    <dl data-clps='-' class="pointer">
+                        <dd class="highlight-func">fopen</dd>
+                        <dd class="highlight-symbol">=></dd>
+                        <dd class="highlight-return func-return"><pre class="longtext">#resource888888888888888901313</pre><i class="icon-info icon-show"></i></dd>
+                        <dd class="highlight-msg">Time(s): 0.0003</dd>
+                        <dd class="highlight-msg2">Mem(kb): 1024</dd>
+                        <dd class="highlight-path">D:\code\FlashbayTTTTT\index.php</dd>
+                        <dd class="highlight-line">Line:2</dd>
+                        <dd class="highlight-params">Params(10):</dd>
+                        <dd class="highlight-params func-params"><pre  class="longtext">'12abcddsdsddddddddddddddddddddddddddddddddddd'</pre><i class="icon-info icon-show"></i></dd>
+                    </dl>
+                </div>
+            </li>-->
+        </ul>
+    </div>
+	
+	<div id="tips_box" class="tips-box"></div>
+	<div id="popupwin" class="popupwin hide">
+		<div id="closepop" class="pop-close-btn">X</div>
+		<div class="msg-panel">
+			<div><span style="font-size:20px;font-family:Consolas;font-weight:bold;color:#EC292D;margin-right:10px;vertical-align:bottom;">XTViewer</span><span id="cur_version" style="vertical-align:bottom;"></span></div>
+			<div><span id="new_version"></span></div>
+			<div></div>
+			<div><span id="contact"></span></div>
+			<div></div>
+			<div id="other_msg" class="other-msg"></div>
+		</div>
+	</div>
+  </body>
+</html>
+<script type="text/javascript" src="./main.js"></script>

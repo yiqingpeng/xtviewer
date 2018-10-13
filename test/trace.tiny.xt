@@ -1,0 +1,27 @@
+Version: 2.5.5
+File format: 4
+TRACE START [2018-09-20 01:29:31]
+1	0	0	0.001242	237944	{main}	1		/mnt/pcshare/index.php	0	0
+2	1	0	0.001334	238032	toTuoFeng	1		/mnt/pcshare/index.php	15	1	'master_employee_pay_rows'
+3	2	0	0.001401	238176	str_replace	0		/mnt/pcshare/index.php	8	3	'master_'	''	'master_employee_pay_rows'
+3	2	1	0.001464	238272
+3	2	R			'employee_pay_rows'
+3	3	0	0.001563	238272	str_replace	0		/mnt/pcshare/index.php	9	3	'_'	' '	'employee_pay_rows'
+3	3	1	0.001616	238400
+3	3	R			'employee pay rows'
+3	4	0	0.001728	238168	ucwords	0		/mnt/pcshare/index.php	10	1	'employee pay rows'
+3	4	1	0.001810	238208
+3	4	R			'Employee Pay Rows'
+2	1	1	0.002605	238112
+2	1	R			'employeePayRows'
+2	5	0	0.002689	238032	apc_cache_info	0		/mnt/pcshare/index.php	18	0
+2	5	1	0.002771	240696
+2	5	R			array ('num_slots' => 4099, 'ttl' => 0, 'num_hits' => 0, 'num_misses' => 0, 'num_inserts' => 0, 'num_entries' => 0, 'expunges' => 0, 'start_time' => 1537406954, 'mem_size' => 0, 'file_upload_progress' => 1, 'memory_type' => 'mmap', 'cache_list' => array (), 'deleted_list' => array (), 'slot_distribution' => array ())
+2	6	0	0.002866	240832	apc_clear_cache	0		/mnt/pcshare/index.php	20	0
+2	6	1	0.002915	240832
+2	6	R			TRUE
+1	0	1	0.015620	253304
+1	0	R			1
+			0.015819	13312
+TRACE END   [2018-09-20 01:29:31]
+

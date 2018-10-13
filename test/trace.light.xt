@@ -1,0 +1,235 @@
+Version: 2.5.5
+File format: 4
+TRACE START [2018-09-20 01:29:31]
+1	0	0	0.001242	237944	{main}	1		/mnt/pcshare/index.php	0	0
+2	1	0	0.001334	238032	toTuoFeng	1		/mnt/pcshare/index.php	15	1	'master_employee_pay_rows'
+3	2	0	0.001401	238176	str_replace	0		/mnt/pcshare/index.php	8	3	'master_'	''	'master_employee_pay_rows'
+3	2	1	0.001464	238272
+3	2	R			'employee_pay_rows'
+3	3	0	0.001563	238272	str_replace	0		/mnt/pcshare/index.php	9	3	'_'	' '	'employee_pay_rows'
+3	3	1	0.001616	238400
+3	3	R			'employee pay rows'
+3	4	0	0.001728	238168	ucwords	0		/mnt/pcshare/index.php	10	1	'employee pay rows'
+3	4	1	0.001810	238208
+3	4	R			'Employee Pay Rows'
+3	5	0	0.001947	238264	str_replace	0		/mnt/pcshare/index.php	11	3	' '	''	'Employee Pay Rows'
+3	5	1	0.002312	238392
+3	5	R			'EmployeePayRows'
+3	6	0	0.002471	238168	lcfirst	0		/mnt/pcshare/index.php	12	1	'EmployeePayRows'
+3	6	1	0.002519	238200
+3	6	R			'employeePayRows'
+2	1	1	0.002605	238112
+2	1	R			'employeePayRows'
+2	7	0	0.002689	238032	apc_cache_info	0		/mnt/pcshare/index.php	18	0
+2	7	1	0.002771	240696
+2	7	R			array ('num_slots' => 4099, 'ttl' => 0, 'num_hits' => 0, 'num_misses' => 0, 'num_inserts' => 0, 'num_entries' => 0, 'expunges' => 0, 'start_time' => 1537406954, 'mem_size' => 0, 'file_upload_progress' => 1, 'memory_type' => 'mmap', 'cache_list' => array (), 'deleted_list' => array (), 'slot_distribution' => array ())
+2	8	0	0.002866	240832	apc_clear_cache	0		/mnt/pcshare/index.php	20	0
+2	8	1	0.002915	240832
+2	8	R			TRUE
+2	9	0	0.002992	240880	apc_clear_cache	0		/mnt/pcshare/index.php	21	1	'user'
+2	9	1	0.003049	240880
+2	9	R			TRUE
+2	10	0	0.003128	240832	apc_cache_info	0		/mnt/pcshare/index.php	22	0
+2	10	1	0.003177	243568
+2	10	R			array ('num_slots' => 4099, 'ttl' => 0, 'num_hits' => 0, 'num_misses' => 0, 'num_inserts' => 0, 'num_entries' => 0, 'expunges' => 0, 'start_time' => 1537406971, 'mem_size' => 0, 'file_upload_progress' => 1, 'memory_type' => 'mmap', 'cache_list' => array (), 'deleted_list' => array (), 'slot_distribution' => array ())
+2	11	0	0.003265	240904	print_r	0		/mnt/pcshare/index.php	23	1	array ('num_slots' => 4099, 'ttl' => 0, 'num_hits' => 0, 'num_misses' => 0, 'num_inserts' => 0, 'num_entries' => 0, 'expunges' => 0, 'start_time' => 1537406971, 'mem_size' => 0, 'file_upload_progress' => 1, 'memory_type' => 'mmap', 'cache_list' => array (), 'deleted_list' => array (), 'slot_distribution' => array ())
+2	11	1	0.003334	240904
+2	11	R			TRUE
+2	12	0	0.003418	241480	print_r	0		/mnt/pcshare/index.php	27	1	array ('A' => 1, 'a' => 2)
+2	12	1	0.003464	241480
+2	12	R			TRUE
+2	13	0	0.003543	242376	call_user_func_array:{/mnt/pcshare/index.php:30}	0		/mnt/pcshare/index.php	30	2	'sprintf'	array (0 => '%s\t%s\t%s', 1 => 'a', 2 => 'b', 3 => 'c')
+3	14	0	0.003595	242472	sprintf	0		/mnt/pcshare/index.php	30	4	'%s\t%s\t%s'	'a'	'b'	'c'
+3	14	1	0.003645	242872
+2	13	1	0.003690	242632
+2	13	R			'a\tb\tc'
+2	15	0	0.003782	242240	vsprintf	0		/mnt/pcshare/index.php	31	2	'%s\t%s\t%s'	array (0 => 'a', 1 => 'b', 2 => 'c')
+2	15	1	0.003828	242496
+2	15	R			'a\tb\tc'
+2	16	0	0.003903	241664	str_rot13	0		/mnt/pcshare/index.php	32	1	'在abcouie@uyrwmcia.comBZ中国'
+2	16	1	0.003950	241712
+2	16	R			'在nopbhvr@hlejzpvn.pbzOM中国'
+2	17	0	0.004030	241664	ord	0		/mnt/pcshare/index.php	33	1	'z'
+2	17	1	0.004078	241664
+2	17	R			122
+2	18	0	0.004155	241664	chr	0		/mnt/pcshare/index.php	33	1	109
+2	18	1	0.004197	241696
+2	18	R			'm'
+2	19	0	0.004274	241664	ord	0		/mnt/pcshare/index.php	34	1	'Z'
+2	19	1	0.004315	241664
+2	19	R			90
+2	20	0	0.004388	241664	chr	0		/mnt/pcshare/index.php	34	1	77
+2	20	1	0.004430	241696
+2	20	R			'M'
+2	21	0	0.004506	242512	array_is_associative	1		/mnt/pcshare/index.php	42	1	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	22	0	0.004551	242560	is_array	0		/mnt/pcshare/index.php	83	1	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	22	1	0.004595	242560
+3	22	R			TRUE
+3	23	0	0.004673	242560	count	0		/mnt/pcshare/index.php	85	1	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	23	1	0.004730	242560
+3	23	R			5
+3	24	0	0.004813	242608	array_key_exists	0		/mnt/pcshare/index.php	87	2	4	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	24	1	0.004890	242608
+3	24	R			TRUE
+3	25	0	0.004974	242608	array_key_exists	0		/mnt/pcshare/index.php	87	2	3	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	25	1	0.005029	242608
+3	25	R			TRUE
+3	26	0	0.005104	242608	array_key_exists	0		/mnt/pcshare/index.php	87	2	2	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	26	1	0.005152	242608
+3	26	R			TRUE
+3	27	0	0.005228	242608	array_key_exists	0		/mnt/pcshare/index.php	87	2	1	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	27	1	0.005273	242608
+3	27	R			TRUE
+3	28	0	0.005347	242656	array_key_exists	0		/mnt/pcshare/index.php	89	2	0	array (0 => 1, 1 => 2, 2 => 3, 3 => 4, 4 => 5)
+3	28	1	0.005392	242656
+3	28	R			TRUE
+2	21	1	0.005468	242560
+2	21	R			FALSE
+2	29	0	0.005545	242464	call_user_func_array:{/mnt/pcshare/index.php:44}	0		/mnt/pcshare/index.php	44	2	'sprintf'	array (0 => 'abcd%sfghij%slmnop%srst', 1 => 'e', 'd' => 'k', 2 => 'q')
+3	30	0	0.005593	242560	sprintf	0		/mnt/pcshare/index.php	44	4	'abcd%sfghij%slmnop%srst'	'e'	'k'	'q'
+3	30	1	0.005638	242960
+2	29	1	0.005685	242720
+2	29	R			'abcdefghijklmnopqrst'
+2	31	0	0.005779	241704	html_entity_decode	0		/mnt/pcshare/index.php	48	1	'mailto&#58;token%40flashbay&#x2E;com'
+2	31	1	0.005830	241768
+2	31	R			'mailto:token%40flashbay.com'
+2	32	0	0.005911	242424	preg_replace_callback	0		/mnt/pcshare/index.php	69	3	'/\\b(?:mailto\\:\\s*)\\b(\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\b/i'	class Closure { public $parameter = array ('$matches' => '<required>') }	'\r\n<div>Aidfsldfsld dfs myemail@Fsc.com.cn is forrea da.\r\n<a href="mailto: abc.efg@dd.ee.com">WelcomeToEmailMe</a>\r\nThis is a email to joge.pls click joge@flashbay.com.\r\n<a href="Mailto:himorning@bebeN.com">himorning@benben.uk.de</a>\r\nVery good.So go to heeelo@qq.com\r\n.cn papa.\r\n</div>\r\n'
+3	33	0	0.006031	244920	{closure:/mnt/pcshare/index.php:59-69}	1		/mnt/pcshare/index.php	69	1	array (0 => 'mailto: abc.efg@dd.ee.com', 1 => 'abc.efg@dd.ee.com', 2 => '.efg', 3 => '.ee')
+4	34	0	0.006089	245032	strstr	0		/mnt/pcshare/index.php	62	2	'abc.efg@dd.ee.com'	'@'
+4	34	1	0.006135	245064
+4	34	R			'@dd.ee.com'
+4	35	0	0.006211	245136	trim	0		/mnt/pcshare/index.php	62	2	'@dd.ee.com'	'@'
+4	35	1	0.006256	245168
+4	35	R			'dd.ee.com'
+4	36	0	0.006331	245192	strstr	0		/mnt/pcshare/index.php	63	3	'abc.efg@dd.ee.com'	'@'	TRUE
+4	36	1	0.006378	245224
+4	36	R			'abc.efg'
+4	37	0	0.006458	245232	antiXss	1		/mnt/pcshare/index.php	64	1	'dd.ee.com'
+5	38	0	0.006547	247648	str_replace	0		/mnt/pcshare/index.php	46	3	array (0 => '(', 1 => ')', 2 => '[', 3 => ']', 4 => '{', 5 => '}', 6 => '<', 7 => '>', 8 => '\\', 9 => '"', 10 => '\'', 11 => ';', 12 => '=', 13 => ',', 14 => '~')	''	'dd.ee.com'
+5	38	1	0.006605	247760
+5	38	R			'dd.ee.com'
+4	37	1	0.006690	245312
+4	37	R			'dd.ee.com'
+4	39	0	0.006865	245360	str_replace	0		/mnt/pcshare/index.php	64	3	'.'	'%2E'	'dd.ee.com'
+4	39	1	0.007011	245392
+4	39	R			'dd%2Eee%2Ecom'
+4	40	0	0.007112	245208	antiXss	1		/mnt/pcshare/index.php	65	1	'abc.efg'
+5	41	0	0.007160	247624	str_replace	0		/mnt/pcshare/index.php	46	3	array (0 => '(', 1 => ')', 2 => '[', 3 => ']', 4 => '{', 5 => '}', 6 => '<', 7 => '>', 8 => '\\', 9 => '"', 10 => '\'', 11 => ';', 12 => '=', 13 => ',', 14 => '~')	''	'abc.efg'
+5	41	1	0.007218	247736
+5	41	R			'abc.efg'
+4	40	1	0.007298	245288
+4	40	R			'abc.efg'
+4	42	0	0.007372	245336	str_replace	0		/mnt/pcshare/index.php	65	3	'.'	'%2E'	'abc.efg'
+4	42	1	0.007417	245368
+4	42	R			'abc%2Eefg'
+3	33	1	0.007497	245160
+3	33	R			'javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'abc%2Eefg\', \'dd%2Eee%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();'
+3	43	0	0.007577	244592	{closure:/mnt/pcshare/index.php:59-69}	1		/mnt/pcshare/index.php	69	1	array (0 => 'Mailto:himorning@bebeN.com', 1 => 'himorning@bebeN.com')
+4	44	0	0.007623	244688	strstr	0		/mnt/pcshare/index.php	62	2	'himorning@bebeN.com'	'@'
+4	44	1	0.007667	244720
+4	44	R			'@bebeN.com'
+4	45	0	0.007750	244768	trim	0		/mnt/pcshare/index.php	62	2	'@bebeN.com'	'@'
+4	45	1	0.007796	244800
+4	45	R			'bebeN.com'
+4	46	0	0.007871	244816	strstr	0		/mnt/pcshare/index.php	63	3	'himorning@bebeN.com'	'@'	TRUE
+4	46	1	0.007968	244848
+4	46	R			'himorning'
+4	47	0	0.008067	244848	antiXss	1		/mnt/pcshare/index.php	64	1	'bebeN.com'
+5	48	0	0.008111	247264	str_replace	0		/mnt/pcshare/index.php	46	3	array (0 => '(', 1 => ')', 2 => '[', 3 => ']', 4 => '{', 5 => '}', 6 => '<', 7 => '>', 8 => '\\', 9 => '"', 10 => '\'', 11 => ';', 12 => '=', 13 => ',', 14 => '~')	''	'bebeN.com'
+5	48	1	0.008165	247376
+5	48	R			'bebeN.com'
+4	47	1	0.008285	244928
+4	47	R			'bebeN.com'
+4	49	0	0.008438	244976	str_replace	0		/mnt/pcshare/index.php	64	3	'.'	'%2E'	'bebeN.com'
+4	49	1	0.008507	245008
+4	49	R			'bebeN%2Ecom'
+4	50	0	0.008586	244848	antiXss	1		/mnt/pcshare/index.php	65	1	'himorning'
+5	51	0	0.008684	247264	str_replace	0		/mnt/pcshare/index.php	46	3	array (0 => '(', 1 => ')', 2 => '[', 3 => ']', 4 => '{', 5 => '}', 6 => '<', 7 => '>', 8 => '\\', 9 => '"', 10 => '\'', 11 => ';', 12 => '=', 13 => ',', 14 => '~')	''	'himorning'
+5	51	1	0.008770	247376
+5	51	R			'himorning'
+4	50	1	0.008884	244928
+4	50	R			'himorning'
+4	52	0	0.009021	244976	str_replace	0		/mnt/pcshare/index.php	65	3	'.'	'%2E'	'himorning'
+4	52	1	0.009066	245008
+4	52	R			'himorning'
+3	43	1	0.009256	244800
+3	43	R			'javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'himorning\', \'bebeN%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();'
+2	32	1	0.009337	243880
+2	32	R			'\r\n<div>Aidfsldfsld dfs myemail@Fsc.com.cn is forrea da.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'abc%2Eefg\', \'dd%2Eee%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();">WelcomeToEmailMe</a>\r\nThis is a email to joge.pls click joge@flashbay.com.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'himorning\', \'bebeN%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();">himorning@benben.uk.de</a>\r\nVery good.So go to heeelo@qq.com\r\n.cn papa.\r\n</div>\r\n'
+2	53	0	0.009420	243168	preg_replace_callback	0		/mnt/pcshare/index.php	77	3	'/\\b(\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*)\\b/i'	class Closure { public $parameter = array ('$matches' => '<required>') }	'\r\n<div>Aidfsldfsld dfs myemail@Fsc.com.cn is forrea da.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'abc%2Eefg\', \'dd%2Eee%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();">WelcomeToEmailMe</a>\r\nThis is a email to joge.pls click joge@flashbay.com.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'himorning\', \'bebeN%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();">himorning@benben.uk.de</a>\r\nVery good.So go to heeelo@qq.com\r\n.cn papa.\r\n</div>\r\n'
+3	54	0	0.009495	246632	{closure:/mnt/pcshare/index.php:71-77}	1		/mnt/pcshare/index.php	77	1	array (0 => 'myemail@Fsc.com.cn', 1 => 'myemail@Fsc.com.cn', 2 => '', 3 => '.com')
+4	55	0	0.009544	246680	str_rot13	0		/mnt/pcshare/index.php	74	1	'myemail@Fsc.com.cn'
+4	55	1	0.009587	246720
+4	55	R			'zlrznvy@Sfp.pbz.pa'
+3	54	1	0.009665	246752
+3	54	R			'<span class="rot13-decode">zlrznvy@Sfp.pbz.pa</span>'
+3	56	0	0.009761	246296	{closure:/mnt/pcshare/index.php:71-77}	1		/mnt/pcshare/index.php	77	1	array (0 => 'joge@flashbay.com', 1 => 'joge@flashbay.com')
+4	57	0	0.009809	246344	str_rot13	0		/mnt/pcshare/index.php	74	1	'joge@flashbay.com'
+4	57	1	0.009852	246384
+4	57	R			'wbtr@synfuonl.pbz'
+3	56	1	0.009975	246416
+3	56	R			'<span class="rot13-decode">wbtr@synfuonl.pbz</span>'
+3	58	0	0.010065	246632	{closure:/mnt/pcshare/index.php:71-77}	1		/mnt/pcshare/index.php	77	1	array (0 => 'himorning@benben.uk.de', 1 => 'himorning@benben.uk.de', 2 => '', 3 => '.uk')
+4	59	0	0.010112	246680	str_rot13	0		/mnt/pcshare/index.php	74	1	'himorning@benben.uk.de'
+4	59	1	0.010156	246720
+4	59	R			'uvzbeavat@oraora.hx.qr'
+3	58	1	0.010231	246760
+3	58	R			'<span class="rot13-decode">uvzbeavat@oraora.hx.qr</span>'
+3	60	0	0.010312	246280	{closure:/mnt/pcshare/index.php:71-77}	1		/mnt/pcshare/index.php	77	1	array (0 => 'heeelo@qq.com', 1 => 'heeelo@qq.com')
+4	61	0	0.010357	246328	str_rot13	0		/mnt/pcshare/index.php	74	1	'heeelo@qq.com'
+4	61	1	0.010402	246360
+4	61	R			'urrryb@dd.pbz'
+3	60	1	0.010481	246400
+3	60	R			'<span class="rot13-decode">urrryb@dd.pbz</span>'
+2	53	1	0.010559	245592
+2	53	R			'\r\n<div>Aidfsldfsld dfs <span class="rot13-decode">zlrznvy@Sfp.pbz.pa</span> is forrea da.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'abc%2Eefg\', \'dd%2Eee%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();">WelcomeToEmailMe</a>\r\nThis is a email to joge.pls click <span class="rot13-decode">wbtr@synfuonl.pbz</span>.\r\n<a href="javascript:+function(){var schm=\'mail\'+\'\'+\'to\'+\'&#58;\', vbx=[\'himorning\', \'bebeN%2Ecom\']; location.href= schm + vbx.join(\'%\' +(3*10+5*2))}();"><span class="rot13-decode">uvzbeavat@oraora.hx.qr</span></a>\r\nVery good.So go to <span class="rot13-decode">urrryb@dd.pbz</span>\r\n.cn papa.\r\n</div>\r\n'
+2	62	0	0.013598	252352	include	1	/mnt/pcshare/static_cls.php	/mnt/pcshare/index.php	93	0
+3	63	0	0.013654	252416	B::callWho	1		/mnt/pcshare/static_cls.php	52	0
+4	64	0	0.013705	252464	A::callWho	1		/mnt/pcshare/static_cls.php	41	0
+5	65	0	0.013749	252496	A::who	1		/mnt/pcshare/static_cls.php	27	0
+5	65	1	0.013836	252544
+5	65	R			NULL
+5	66	0	0.013932	252528	B::who	1		/mnt/pcshare/static_cls.php	28	0
+5	66	1	0.013978	252576
+5	66	R			NULL
+4	64	1	0.014057	252576
+4	64	R			NULL
+4	67	0	0.014134	252528	B::who	1		/mnt/pcshare/static_cls.php	42	0
+4	67	1	0.014176	252576
+4	67	R			NULL
+4	68	0	0.014253	252528	B::who	1		/mnt/pcshare/static_cls.php	43	0
+4	68	1	0.014297	252576
+4	68	R			NULL
+3	63	1	0.014374	252576
+3	63	R			NULL
+3	69	0	0.014451	252592	A::singleton	1		/mnt/pcshare/static_cls.php	59	0
+3	69	1	0.014499	252688
+3	69	R			class B {  }
+3	70	0	0.014577	252912	get_class	0		/mnt/pcshare/static_cls.php	60	1	class B {  }
+3	70	1	0.014622	252944
+3	70	R			'B'
+3	71	0	0.014702	252928	A::singleton	1		/mnt/pcshare/static_cls.php	61	0
+3	71	1	0.014744	252976
+3	71	R			class B {  }
+3	72	0	0.014935	253112	get_class	0		/mnt/pcshare/static_cls.php	62	1	class B {  }
+3	72	1	0.014980	253144
+3	72	R			'B'
+3	73	0	0.015059	253128	A::singleton_p	1		/mnt/pcshare/static_cls.php	64	0
+3	73	1	0.015104	253224
+3	73	R			class A {  }
+3	74	0	0.015181	253448	get_class	0		/mnt/pcshare/static_cls.php	65	1	class A {  }
+3	74	1	0.015224	253480
+3	74	R			'A'
+3	75	0	0.015302	253464	A::singleton_p	1		/mnt/pcshare/static_cls.php	66	0
+3	75	1	0.015344	253512
+3	75	R			class A {  }
+3	76	0	0.015422	253648	get_class	0		/mnt/pcshare/static_cls.php	67	1	class A {  }
+3	76	1	0.015464	253680
+3	76	R			'A'
+2	62	1	0.015540	253648
+2	62	R			1
+1	0	1	0.015620	253304
+1	0	R			1
+			0.015819	13312
+TRACE END   [2018-09-20 01:29:31]
+
